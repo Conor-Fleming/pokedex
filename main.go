@@ -23,6 +23,8 @@ func main() {
 
 	commands := map[string]interface{}{
 		"help": help,
+		"map":  mapcommand,
+		"mapb": mapb,
 		"exit": exit,
 	}
 
@@ -53,5 +55,4 @@ func help() {
 
 func exit() {
 	os.Exit(0)
-
 }
