@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -33,6 +34,20 @@ func mapcommand(cfg *config) error {
 }
 
 func mapb(cfg *config) error {
+	if cfg.prevURL == nil {
+		fmt.Println("Error: You are on the first page")
+		return errors.New("No previous page")
+	}
+
+	resource, err := callAPI(cfg.prevURL)
+	if err != nil {
+		return err
+	}
+
+	cfg.nextURL = resource.Next
+	cfg.prevURL = resource.Previous
+
+	printResults(resource)
 
 	return nil
 }
