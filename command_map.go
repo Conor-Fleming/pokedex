@@ -7,8 +7,8 @@ import (
 	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
 
-func mapcommand(cfg *config) error {
-	resource, err := pokeapi.CallAPI(cfg.nextURL)
+func mapcommand(cfg *pokeapi.Config) error {
+	resource, err := cfg.CallAPI(cfg.nextURL)
 	if err != nil {
 		return err
 	}
@@ -21,13 +21,13 @@ func mapcommand(cfg *config) error {
 	return nil
 }
 
-func mapb(cfg *config) error {
+func mapb(cfg *pokeapi.Config) error {
 	if cfg.prevURL == nil {
 		fmt.Println("Error: You are on the first page")
 		return errors.New("No previous page")
 	}
 
-	resource, err := pokeapi.CallAPI(cfg.prevURL)
+	resource, err := cfg.CallAPI(cfg.prevURL)
 	if err != nil {
 		return err
 	}

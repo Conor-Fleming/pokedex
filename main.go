@@ -2,6 +2,10 @@ package main
 
 import (
 	"fmt"
+	"time"
+
+	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
+	"github.com/Conor-Fleming/pokedex/internal/pokecache"
 )
 
 const (
@@ -20,7 +24,9 @@ __________       __          ________
 
 func main() {
 	fmt.Print(BANNER)
-	cfg := &config{}
+	cfg := &pokeapi.Config{
+		Cache: pokecache.NewCache(time.Minute * 5),
+	}
 
 	startPoke(cfg)
 }

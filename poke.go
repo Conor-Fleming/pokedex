@@ -1,20 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type config struct {
-	nextURL *string
-	prevURL *string
-}
+	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
+)
 
-var commands = map[string]func(*config) error{
+var commands = map[string]func(*pokeapi.Config) error{
 	"help": help,
 	"map":  mapcommand,
 	"mapb": mapb,
 	"exit": exit,
 }
 
-func startPoke(cfg *config) {
+func startPoke(cfg *pokeapi.Config) {
 	help(cfg)
 
 	for {

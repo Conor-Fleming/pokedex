@@ -12,6 +12,7 @@ func CallAPI(url *string) (*Resource, error) {
 	if url != nil {
 		baseURL = *url
 	}
+	//check cache for the URL, if available use that data and return
 	res, err := http.Get(baseURL)
 	if err != nil {
 		log.Print("Calling API: ", err)

@@ -1,8 +1,12 @@
 package main
 
-import "os"
+import (
+	"os"
 
-func exit(cfg *config) error {
+	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
+)
+
+func exit(cfg *pokeapi.Config) error {
 	os.Exit(0)
 	return nil
 }
