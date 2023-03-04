@@ -31,6 +31,7 @@ func (c *Cache) Get(key string) ([]byte, bool) {
 	if v, ok := c.cache[key]; ok {
 		return v.val, true
 	}
+
 	return nil, false
 }
 

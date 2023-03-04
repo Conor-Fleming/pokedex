@@ -8,13 +8,13 @@ import (
 )
 
 func mapcommand(cfg *pokeapi.Config) error {
-	resource, err := cfg.CallAPI(cfg.nextURL)
+	resource, err := cfg.CallAPI(cfg.NextURL)
 	if err != nil {
 		return err
 	}
 
-	cfg.nextURL = resource.Next
-	cfg.prevURL = resource.Previous
+	cfg.NextURL = resource.Next
+	cfg.PrevURL = resource.Previous
 
 	printResults(resource)
 
@@ -22,18 +22,18 @@ func mapcommand(cfg *pokeapi.Config) error {
 }
 
 func mapb(cfg *pokeapi.Config) error {
-	if cfg.prevURL == nil {
+	if cfg.PrevURL == nil {
 		fmt.Println("Error: You are on the first page")
 		return errors.New("No previous page")
 	}
 
-	resource, err := cfg.CallAPI(cfg.prevURL)
+	resource, err := cfg.CallAPI(cfg.PrevURL)
 	if err != nil {
 		return err
 	}
 
-	cfg.nextURL = resource.Next
-	cfg.prevURL = resource.Previous
+	cfg.NextURL = resource.Next
+	cfg.PrevURL = resource.Previous
 
 	printResults(resource)
 

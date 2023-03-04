@@ -7,12 +7,23 @@ import (
 	"net/http"
 )
 
-func CallAPI(url *string) (*Resource, error) {
+func (c *Config) CallAPI(url *string) (*Resource, error) {
 	baseURL := "https://pokeapi.co/api/v2/location-area"
 	if url != nil {
 		baseURL = *url
 	}
-	//check cache for the URL, if available use that data and return
+	//if data for URL exists in cache use that instead of requesting
+	if v, ok := c.Cache.Get(baseURL); ok {
+		resource := &Resource{}
+		err := json.Unmarshal(v, &resource)
+		if err != nil {
+			log.Print("Unmarshal Name: ", err)
+			return nil, err
+		}
+
+		return resource, nil
+	}
+
 	res, err := http.Get(baseURL)
 	if err != nil {
 		log.Print("Calling API: ", err)
@@ -25,6 +36,9 @@ func CallAPI(url *string) (*Resource, error) {
 		log.Print("Read Response Data: ", err)
 		return nil, err
 	}
+
+	//adding response to cache
+	c.Cache.Add(baseURL, body)
 
 	resource := &Resource{}
 	err = json.Unmarshal(body, &resource)
