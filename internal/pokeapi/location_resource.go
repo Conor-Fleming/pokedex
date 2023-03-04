@@ -1,4 +1,4 @@
-package poke
+package pokeapi
 
 type Resource struct {
 	Count    int     `json:"count"`

@@ -4,11 +4,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Conor-Fleming/pokedex/internal/poke"
+	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
 
 func mapcommand(cfg *config) error {
-	resource, err := poke.CallAPI(cfg.nextURL)
+	resource, err := pokeapi.CallAPI(cfg.nextURL)
 	if err != nil {
 		return err
 	}
@@ -27,7 +27,7 @@ func mapb(cfg *config) error {
 		return errors.New("No previous page")
 	}
 
-	resource, err := poke.CallAPI(cfg.prevURL)
+	resource, err := pokeapi.CallAPI(cfg.prevURL)
 	if err != nil {
 		return err
 	}
@@ -40,7 +40,7 @@ func mapb(cfg *config) error {
 	return nil
 }
 
-func printResults(names *poke.Resource) {
+func printResults(names *pokeapi.Resource) {
 	for _, v := range names.Results {
 		fmt.Println(v.Name)
 	}

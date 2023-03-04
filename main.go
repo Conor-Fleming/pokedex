@@ -24,7 +24,3 @@ func main() {
 
 	startPoke(cfg)
 }
-
-func invalidCommand() {
-	fmt.Println("Command not found")
-}

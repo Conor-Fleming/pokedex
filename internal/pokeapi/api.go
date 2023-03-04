@@ -1,4 +1,4 @@
-package poke
+package pokeapi
 
 import (
 	"encoding/json"

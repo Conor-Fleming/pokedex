@@ -28,3 +28,7 @@ func startPoke(cfg *config) {
 		invalidCommand()
 	}
 }
+
+func invalidCommand() {
+	fmt.Println("Command not found")
+}
