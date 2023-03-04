@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func callAPI(url *string) (*Resource, error) {
+func CallAPI(url *string) (*Resource, error) {
 	baseURL := "https://pokeapi.co/api/v2/location-area"
 	if url != nil {
 		baseURL = *url
