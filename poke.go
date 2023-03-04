@@ -7,10 +7,11 @@ import (
 )
 
 var commands = map[string]func(*pokeapi.Config) error{
-	"help": help,
-	"map":  mapcommand,
-	"mapb": mapb,
-	"exit": exit,
+	"help":  help,
+	"map":   mapcommand,
+	"mapb":  mapb,
+	"exit":  exit,
+	"clear": clear,
 }
 
 func startPoke(cfg *pokeapi.Config) {
