@@ -1,17 +1,21 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 
 	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
 
-var commands = map[string]func(*pokeapi.Config) error{
-	"help":  help,
-	"map":   mapcommand,
-	"mapb":  mapb,
-	"exit":  exit,
-	"clear": clear,
+var commands = map[string]func(*pokeapi.Config, ...string) error{
+	"help":    help,
+	"map":     mapcommand,
+	"mapb":    mapb,
+	"explore": explore,
+	"exit":    exit,
+	"clear":   clear,
 }
 
 func startPoke(cfg *pokeapi.Config) {
@@ -19,10 +23,12 @@ func startPoke(cfg *pokeapi.Config) {
 
 	for {
 		fmt.Print("pokedex > ")
-		var input string
-		fmt.Scanf("%v", &input)
-		if value, ok := commands[input]; ok {
-			value(cfg)
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		args := strings.Fields(scanner.Text())
+
+		if value, ok := commands[args[0]]; ok {
+			value(cfg, args[1:]...)
 			continue
 		}
 		invalidCommand()
