@@ -3,8 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"math/rand"
-	"time"
 
 	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
@@ -14,6 +12,12 @@ func catch(cfg *pokeapi.Config, name ...string) error {
 		return errors.New("must provide a location area to explore")
 	}
 	pokemonName := name[0]
+
+	//check to see if the given pokemon has already been caught
+	if _, ok := cfg.Pokedex[pokemonName]; ok {
+		fmt.Printf("You have already caught %s\n", pokemonName)
+		return nil
+	}
 	//call catch pokemon func that returns a Pokemon obj and an error
 	//if catch returns error then print message and return
 	fmt.Printf("Throwing a Pokeball at %s\n", pokemonName)
@@ -36,17 +40,11 @@ func catch(cfg *pokeapi.Config, name ...string) error {
 }
 
 func catchPokemon(exp int) bool {
-	// Calculate catch probability based on base experience
-	catchProbability := 1.0 / float64(exp)
+	// Initialize random number generator with current time
+	//rand.Seed(time.Now().UnixNano())
 
-	// Generate random number between 0 and 1
-	rand.Seed(time.Now().UnixNano())
-	randomNum := rand.Float64()
+	// Return true if a random integer between 0 and n/2 is 0
+	//return rand.Intn(exp/2+1) == 0
 
-	// Compare random number to catch probability
-	if randomNum <= catchProbability {
-		return true // Pokémon caught!
-	} else {
-		return false // Pokémon escaped :(
-	}
+	return true
 }

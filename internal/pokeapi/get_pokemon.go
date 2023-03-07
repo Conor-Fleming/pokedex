@@ -29,7 +29,7 @@ func (c *Config) GetPokemon(name string) (Pokemon, error) {
 	resource := Pokemon{}
 	err = json.Unmarshal(body, &resource)
 	if err != nil {
-		log.Print("(New URL) Unmarshal Name : ", err)
+		log.Print("Could not find any data for this pokemon")
 		return Pokemon{}, err
 	}
 
