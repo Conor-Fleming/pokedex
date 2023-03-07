@@ -18,7 +18,15 @@ func explore(cfg *pokeapi.Config, input ...string) error {
 		return err
 	}
 
-	fmt.Println(resource.PokemonEncounters)
+	fmt.Printf("Exploring %s...\n", locationArea)
+	printPokemon(resource)
 
 	return nil
+}
+
+func printPokemon(resource pokeapi.Location) {
+	fmt.Println("Found Pokemon:")
+	for _, v := range resource.PokemonEncounters {
+		fmt.Println("-", v.Pokemon.Name)
+	}
 }
