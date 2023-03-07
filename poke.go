@@ -27,10 +27,14 @@ func startPoke(cfg *pokeapi.Config) {
 		fmt.Print("pokedex > ")
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan()
+		if scanner.Text() == "" {
+			continue
+		}
 		args := strings.Fields(scanner.Text())
+		//empty command
 
-		if value, ok := commands[args[0]]; ok {
-			value(cfg, args[1:]...)
+		if val, ok := commands[args[0]]; ok {
+			val(cfg, args[1:]...)
 			continue
 		}
 		invalidCommand()
