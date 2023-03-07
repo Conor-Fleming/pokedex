@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
@@ -41,10 +43,8 @@ func catch(cfg *pokeapi.Config, name ...string) error {
 
 func catchPokemon(exp int) bool {
 	// Initialize random number generator with current time
-	//rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano())
 
 	// Return true if a random integer between 0 and n/2 is 0
-	//return rand.Intn(exp/2+1) == 0
-
-	return true
+	return rand.Intn(exp/2+1) == 0
 }
