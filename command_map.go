@@ -8,7 +8,7 @@ import (
 )
 
 func mapcommand(cfg *pokeapi.Config, input ...string) error {
-	resource, err := cfg.CallAPI(cfg.NextURL)
+	resource, err := cfg.ListLocation(cfg.NextURL)
 	if err != nil {
 		return err
 	}
@@ -27,7 +27,7 @@ func mapb(cfg *pokeapi.Config, input ...string) error {
 		return errors.New("No previous page")
 	}
 
-	resource, err := cfg.CallAPI(cfg.PrevURL)
+	resource, err := cfg.ListLocation(cfg.PrevURL)
 	if err != nil {
 		return err
 	}
@@ -40,7 +40,7 @@ func mapb(cfg *pokeapi.Config, input ...string) error {
 	return nil
 }
 
-func printResults(names *pokeapi.Resource) {
+func printResults(names pokeapi.LocationShallow) {
 	for _, v := range names.Results {
 		fmt.Println(v.Name)
 	}
