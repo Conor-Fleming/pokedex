@@ -16,6 +16,7 @@ func help(cfg *pokeapi.Config, input ...string) error {
 	fmt.Println("explore [area]  	- view list of Pokemon in a given area")
 	fmt.Println("catch [name]		- attempt to catch a pokemon with a given name")
 	fmt.Println("inspect [name]		- inspect a pokemon from your pokedex")
+	fmt.Println("pokedex            - view the contents of your pokedex")
 	fmt.Println()
 	fmt.Println("help   			- View the help text")
 	fmt.Println("clear  			- clear the screen")

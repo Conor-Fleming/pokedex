@@ -16,6 +16,7 @@ var commands = map[string]func(*pokeapi.Config, ...string) error{
 	"catch":   catch,
 	"inspect": inspect,
 	"explore": explore,
+	"pokedex": pokedex,
 	"exit":    exit,
 	"clear":   clear,
 }
@@ -27,11 +28,11 @@ func startPoke(cfg *pokeapi.Config) {
 		fmt.Print("pokedex > ")
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan()
+		//checking for empty input
 		if scanner.Text() == "" {
 			continue
 		}
 		args := strings.Fields(scanner.Text())
-		//empty command
 
 		if val, ok := commands[args[0]]; ok {
 			val(cfg, args[1:]...)
