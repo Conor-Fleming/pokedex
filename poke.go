@@ -13,6 +13,7 @@ var commands = map[string]func(*pokeapi.Config, ...string) error{
 	"help":    help,
 	"map":     mapcommand,
 	"mapb":    mapb,
+	"catch":   catch,
 	"explore": explore,
 	"exit":    exit,
 	"clear":   clear,

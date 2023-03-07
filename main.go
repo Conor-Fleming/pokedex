@@ -25,7 +25,8 @@ __________       __          ________
 func main() {
 	fmt.Print(BANNER)
 	cfg := &pokeapi.Config{
-		Cache: pokecache.NewCache(time.Minute * 5),
+		Cache:   pokecache.NewCache(time.Minute * 5),
+		Pokedex: map[string]pokeapi.Pokemon{},
 	}
 
 	startPoke(cfg)
