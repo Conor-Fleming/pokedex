@@ -6,6 +6,7 @@ import (
 	"github.com/Conor-Fleming/pokedex/internal/pokeapi"
 )
 
+// help displays the helptext
 func help(cfg *pokeapi.Config, input ...string) error {
 	fmt.Println("\n Welcome to Pokedex! ")
 	fmt.Println("                             ")

@@ -12,8 +12,8 @@ func inspect(cfg *pokeapi.Config, name ...string) error {
 		return errors.New("must provide a pokemon name to inspect")
 	}
 
+	// assign pokemon name to var
 	pokemon := name[0]
-
 	//check for existence in map, if found print information
 	if val, ok := cfg.Pokedex[pokemon]; ok {
 		listInfo(val)

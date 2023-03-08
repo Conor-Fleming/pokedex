@@ -8,7 +8,7 @@ import (
 
 func pokedex(cfg *pokeapi.Config, input ...string) error {
 	//if empty print message and return
-	if cfg.Pokedex == nil {
+	if len(cfg.Pokedex) == 0 {
 		fmt.Println("Your Pokedex is empty")
 		return nil
 	}
