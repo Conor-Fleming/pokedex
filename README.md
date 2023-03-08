@@ -38,7 +38,7 @@ To clone and run the app, follow these steps:
 
 If you encounter any issues while using Pokedex, please report them in the Issues section of the repository. Contributions are also welcome!
 
-##TODOs
+## TODO's
 - Working on implementing support for arrow keys to navigate previous commands.
 - New features to interact with pokemon
 - Saving data between seperate sessions
