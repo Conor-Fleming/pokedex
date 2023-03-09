@@ -39,8 +39,6 @@ func (c *Cache) ReapLoop(interval time.Duration) {
 	//declare ticker to send on the channel every ten minutes or so
 	ticker := time.NewTicker(10 * time.Minute)
 
-	//c.mux.Lock()
-	//defer c.mux.Unlock()
 	//remove entries to cache that are older than duration passed to NewCache()
 	for range ticker.C {
 		for k, v := range c.cache {
