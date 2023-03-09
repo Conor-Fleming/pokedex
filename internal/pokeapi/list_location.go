@@ -2,6 +2,7 @@ package pokeapi
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -18,6 +19,7 @@ func (c *Config) ListLocation(inputURL *string) (LocationShallow, error) {
 	}
 	//if data for URL exists in cache use that instead of requesting
 	if v, ok := c.Cache.Get(url); ok {
+		fmt.Println("test")
 		resource := LocationShallow{}
 		err := json.Unmarshal(v, &resource)
 		if err != nil {
